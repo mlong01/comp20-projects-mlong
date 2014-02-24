@@ -1,0 +1,22 @@
+***					Matt Long's Duck Hunt README					***
+
+As of now, the game doesn't have any actual gaming functionality.
+The sprites are drawn onto the screen; the gameplay will come later.
+
+Initially, I planned on placing the bush/dirt road graphic 30 pixels
+above the bottom of the image, and including some element of the
+specified #C96A1B color below it to elongate the road, and have the
+picture of the dog drawn so it overlaps the element and dirt road
+picture. I couldn't get the dog to appear on top of the element, 
+so I stuck with just the bush graphic since it does have a decently
+sized dirt road that the dog fit on. I also could have just drawn the
+dog over the dirt road and not the extra div thing, but I don't
+think that's necessarily any better than the current implementation.
+I did leave the div tag in the code, the css entry for it in the
+file, and the coordinates for the bush and tree graphic if the ground 
+div was there, but they're all commented out.I  can just re-implement 
+it by uncommenting them.
+
+I spent about 3 hours on this project, and worked the first hour with
+Elaine Chestler as we figured out referencing the sprite sheet and
+drawing the first element.
