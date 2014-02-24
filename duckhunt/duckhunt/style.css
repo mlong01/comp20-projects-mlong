@@ -12,12 +12,19 @@ body {
 #sourceImg{
 	display: none;
 }
-/*
+
+/*An attempt to add a ground-colored box below the bushes.
+  Couldn't get it behind the images on the canvas, so instead
+  put the bushes graphic at the bottom of the image.
+
+
 #ground{
 	background-color:#C96A1B;
-	position: absolute;
-	top:550px;
-	width:800px;
-	height:60px;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	top:    -35px;
+	width:  800px;
+	height: 30px;
 }
 */
