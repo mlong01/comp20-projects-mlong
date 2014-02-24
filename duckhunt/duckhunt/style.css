@@ -1,0 +1,23 @@
+#game_div{
+    text-align: center;
+}
+
+canvas {
+    background-color: #87CEEB;
+}
+
+body {
+}
+
+#sourceImg{
+	display: none;
+}
+/*
+#ground{
+	background-color:#C96A1B;
+	position: absolute;
+	top:550px;
+	width:800px;
+	height:60px;
+}
+*/
