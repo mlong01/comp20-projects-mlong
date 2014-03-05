@@ -2,4 +2,10 @@
 	background-color: #10AFFF;
 	color: black;
 	
+	border: solid;
+	border-radius: 20px;
+	border-color: gray;
+
+	margin-top: 20px;
+
 }
