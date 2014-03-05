@@ -4,6 +4,7 @@
 
 <head>
 <title>Friends of Ming Chow Jobs Listing</title>
+<link rel="stylesheet" type="text/css" href="jobs.css" />
 <script>
 	/*			{"id":1,
 				 "position":"Various",
@@ -21,23 +22,29 @@
 			parsed = JSON.parse(str);
 			length = parsed.length;
 
-			var list = document.getElementById('list');
-			var entry = document.createElement("ul");
-
-			console.log("Hello?");
-			console.log(length);
-
 			for(i = 0; i < length; i++) {
 				//console.log(parsed[i]['company']);
-				var msgnode = document.createTextNode(parsed[i]['company']);
-				entry.appendChild(msgnode);
+				var list = document.getElementById('list');
+				var dispList = document.createElement("ul");
+				
+				var msgnode1 = document.createTextNode("Company: " + parsed[i]['company']);
+				var msgnode2 = document.createTextNode("Position: " + parsed[i]['position']);
+				var msgnode3 = document.createTextNode("Location: " + parsed[i]['location']);
+				
+				var entry1 = document.createElement("li");
+				var entry2 = document.createElement("li");
+				var entry3 = document.createElement("li");
+
+				entry1.appendChild(msgnode1);
+				entry2.appendChild(msgnode2);
+				entry3.appendChild(msgnode3);
+				
+				dispList.appendChild(entry1);
+				dispList.appendChild(entry2);
+				dispList.appendChild(entry3);
+				
+				list.appendChild(dispList);
 			}
-
-			list.insertBefore(entry, list.firstChild);
-
-			console.log("WOOHOO");
-
-		// Start working here...
 	}
 </script>
 </head>
