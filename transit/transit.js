@@ -9,7 +9,7 @@ function makeMap(position) {
 	console.log(lat + " " + lng);
 
 	var mapOptions = {
-		center: new google.maps.LatLng(lat, 150.644),
+		center: new google.maps.LatLng(lat, lng),
 		zoom: 12
 	};
 
