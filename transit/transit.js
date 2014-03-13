@@ -1,4 +1,4 @@
-/*comment 2 for committing*/
+/*comment 3 for committing*/
 function makeMap(position) {
 
 	//Find Lat + lng with geolocation, then do 
