@@ -25,10 +25,13 @@ function makeMap(position) {
 function findData() {
 	var req = new XMLHttpRequest();
 	req.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);
+	while(req.readyState == 1) {
+		console.log("Waiting...");
+	}
 	console.log(req.readyState);
 	console.log(req.responseText);
 	req.onreadystatechange = dataReady(req);
-	req.send(null);
+	req.send();
 	console.log(req.readyState);
 	console.log(req.responseText);
 	console.log(req.readyState);
