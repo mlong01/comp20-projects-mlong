@@ -2,15 +2,9 @@
 
 function makeMap(position) {
 
-	//Find Lat + lng with geolocation, then do 
-	var crd = position.coords;
-	var lng = crd.longitude;
-	var lat = crd.latitude;
-
-	console.log(lat + " " + lng);
-
 	var mapOptions = {
-		center: new google.maps.LatLng(lat, lng),
+		center: new google.maps.LatLng(position.coords.latitude, 
+									   position.coords.longitude),
 		zoom: 12
 	};
 
