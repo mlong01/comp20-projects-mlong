@@ -1,3 +1,4 @@
+/*comment 1 for commit*/
 
 function makeMap(position) {
 
