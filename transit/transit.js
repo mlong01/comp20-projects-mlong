@@ -172,6 +172,7 @@ function drawMarkers(map) {
         popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>' +
                           '<table><tr><td>DESTINATION</td><td>ETA (in seconds)</td></tr>';
 
+        /* Attempted adding of stops and ETA, currently non-functional
         for(var trains = 0; trains < trainSched['Schedule'].length; trains++) {
             for(var stops = 0; stops < trainSched['Schedule'][trains]['Predictions'].length; stops++) {
                 if(trainSched['Schedule'][trains]['Predictions'][stops]['Stop'] == stations[i]['Station']) {
@@ -184,10 +185,11 @@ function drawMarkers(map) {
 
         popupContent[i] += '</table>';
 
-        /*
-                          '<h6>To see incoming and outgoing trains, purchase our in-app ' +
-                          '$0.99 DLC';
         */
+
+        popupContent[i] += '</table></br>To see incoming and outgoing trains, purchase our in-app ' +
+                           '$0.99 DLC';
+
         popup[i] = new google.maps.InfoWindow();
 
         google.maps.event.addListener(toPlace, 'click', function() {
