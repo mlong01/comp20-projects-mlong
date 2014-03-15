@@ -89,7 +89,7 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 
 	drawMarkers(map);
 	drawLines(map);
-	addTables(map);
+	//addTables(map);
 }
 
 
@@ -169,10 +169,11 @@ function drawMarkers(map) {
 		toPlace.setMap(map);
 
     (function (i) {
-        popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>' +
-                          '<table><tr><td>DESTINATION</td><td>ETA (in seconds)</td></tr>';
-
+        
+        popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>';
         /* Attempted adding of stops and ETA, currently non-functional
+        popupContent[i] += '<table><tr><td>DESTINATION</td><td>ETA (in seconds)</td></tr>';
+
         for(var trains = 0; trains < trainSched['Schedule'].length; trains++) {
             for(var stops = 0; stops < trainSched['Schedule'][trains]['Predictions'].length; stops++) {
                 if(trainSched['Schedule'][trains]['Predictions'][stops]['Stop'] == stations[i]['Station']) {
@@ -187,7 +188,7 @@ function drawMarkers(map) {
 
         */
 
-        popupContent[i] += '</table></br>To see incoming and outgoing trains, purchase our in-app ' +
+        popupContent[i] = '</table></br>To see incoming and outgoing trains, purchase our in-app ' +
                            '$0.99 DLC';
 
         popup[i] = new google.maps.InfoWindow();
