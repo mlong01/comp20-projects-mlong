@@ -63,8 +63,8 @@ function makeMarkers(map, myLoc) {
 	});
 
 	meMarker.setMap(map);
-	var myLat = position.coords.latitude;
-	var myLng = position.coords.longitude;
+	var myLat = myLoc.coords.latitude;
+	var myLng = myLoc.coords.longitude;
 
 	var popup = new google.maps.InfoWindow();
 
