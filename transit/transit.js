@@ -175,7 +175,7 @@ function drawMarkers(map) {
 
         popup[i] = new google.maps.InfoWindow();
 
-        google.maps.event.addListener(toPlace, 'click' function() {
+        google.maps.event.addListener(toPlace, 'click', function() {
             console.log(i);
             popup[i].setContent(popupContent[i]);
             popup[i].open(map, this);
