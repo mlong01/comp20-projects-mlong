@@ -66,12 +66,14 @@ function makeMarkers(map, myLoc) {
 	var myLat = position.coords.latitude;
 	var myLng = position.coords.longitude;
 
+	var popup = new google.maps.InfoWindow();
+
 	google.maps.event.addListener(meMarker, 'click', function() {
-		infowindow.setContent('<h5>LOCATION:</h5></br>
+		popup.setContent('<h5>LOCATION:</h5></br>
 							  <h6>('+myLat+', '+myLng+')</br></br>
 							   <h5>CLOSEST STATION:</h5></br>
 							  <h6>TBD</h6>');
-		infowindow.open(map, meMarker);
+		popup.open(map, meMarker);
 	})
 
 	//function located at bottom of code so as not to make giant divide
