@@ -109,10 +109,10 @@ function drawLines(map, stations) {
 		color = '#0000FF';
 	} else if (tLine == "orange") {
 		last = ORAN_END;
-		color = '#FF3300';
+		color = '#E2751C';
 	}
 
-	for(var i = START; i < ORAN_END; i++) {
+	for(var i = START; i < last; i++) {
 			locArray[i] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
 	}
 
@@ -136,21 +136,26 @@ function drawRedLine(map, stations) {
 	var i;
 	var arCnt = 0;
 
+	//First main branch, before fork
 	for(i = START; i <= RED_END_1; i++) {
 		firstLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
 		arCnt++;
 	}
-
 	arCnt = 0;
 
+	//left side of the fork
+	secondLine[arCnt] = new google.maps.LatLng(stations[12]['Lat'], stations[12]['Long']);
+	arCnt++;
 	for(i = RED_ST_2; i <= RED_END_2; i++) {
 		secondLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
 		arCnt++;
 	}
-	
 	arCnt = 0;
 
-		for(i = RED_ST_3; i <= RED_END_3; i++) {
+	//right side of the fork
+	secondLine[arCnt] = new google.maps.LatLng(stations[12]['Lat'], stations[12]['Long']);
+	arCnt++;
+	for(i = RED_ST_3; i <= RED_END_3; i++) {
 		thirdLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
 		arCnt++;
 	}
