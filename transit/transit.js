@@ -8,8 +8,9 @@ var tLine;
 var stations = [];
 
 var START = 0;
-var BLUE_END  = 12;
-var ORAN_END  = 19;
+var BLUE_END    = 12;
+var ORAN_END    = 19;
+var RED_ALL_END = 22;
 //red should go 0-12, then 13-16, then 17-21
 var RED_END_1 = 12;
 var RED_ST_2  = 13;
@@ -98,7 +99,7 @@ function findClosestStation(mylat, mylng) {
 	var tempDist;
 	
 	if(tLine == "red") {
-		last = RED_END_3;
+		last = RED_ALL_END;
 	} else if (tLine == "blue") {
 		last = BLUE_END;
 	} else if (tLine == "orange") {
@@ -145,12 +146,14 @@ function drawMarkers(map) {
 	var last = 0;
 	
 	if(tLine == "red") {
-		last = RED_END_3;
+		last = RED_ALL_END;
 	} else if(tLine == "blue") {
 		last = BLUE_END;
 	} else if (tLine == "orange") {
 		last = ORAN_END;
 	}
+
+  var popup = [];
 
 	for(var i = START; i < last; i++) {
 		var loc = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
@@ -163,13 +166,13 @@ function drawMarkers(map) {
 
 		toPlace.setMap(map);
 
-		var popup = new google.maps.InfoWindow();
+		popup[i] = new google.maps.InfoWindow();
 
 		google.maps.event.addListener(toPlace, 'click', function() {
 			var content = '<h2>'+stations[i]['Station']+'</h2>';
 
-			popup.setContent(content);
-			popup.open(map, this);
+			popup[i].setContent(content);
+			popup[i].open(map, this);
 		});
 	}
 }
@@ -271,7 +274,7 @@ function addTables(map) {
 	var last = 0;
 	
 	if(tLine == "red") {
-		last = RED_END_3;
+		last = RED_ALL_END;
 	} else if(tLine == "blue") {
 		last = BLUE_END;
 	} else if (tLine == "orange") {
