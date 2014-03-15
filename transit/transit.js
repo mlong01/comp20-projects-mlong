@@ -82,6 +82,7 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 
 	drawMarkers(map, stations);
 	drawLines(map, stations);
+	addTables(map, stations);
 }
 
 
@@ -158,6 +159,15 @@ function drawMarkers(map, stations) {
 		});
 
 		toPlace.setMap(map);
+
+		var popup = new google.maps.InfoWindow();
+
+		google.maps.event.addListener(toPlace, 'click', function() {
+			var content = '<h2>'+stations[i]['Station']+'</h2>';
+
+			popup.setContent(content);
+			popup.open(map, this);
+		});
 	}
 }
 
@@ -250,6 +260,26 @@ function drawRedLine(map, stations) {
 	colorLine2.setMap(map);
 	colorLine3.setMap(map);
 	
+}
+
+
+
+function addTables(map, stations) {
+	var last = 0;
+	
+	if(tLine == "red") {
+		last = RED_END_3;
+	} else if(tLine == "blue") {
+		last = BLUE_END;
+	} else if (tLine == "orange") {
+		last = ORAN_END;
+	}
+
+	for(var i = START; i < last; i++) {
+
+	}
+
+
 }
 
 
