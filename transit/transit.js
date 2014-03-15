@@ -93,9 +93,9 @@ function findClosestStation(stations, mylat, mylng) {
 	
 	if(tLine == "red") {
 		last = RED_END_3;
-	} else if (tline == "blue") {
+	} else if (tLine == "blue") {
 		last = BLUE_END;
-	} else if (tline == "orange") {
+	} else if (tLine == "orange") {
 		last = ORAN_END;
 	}
 
