@@ -5,6 +5,8 @@ var req;
 var trainSched = [];
 var tLine;
 
+var stations = [];
+
 var START = 0;
 var BLUE_END  = 12;
 var ORAN_END  = 19;
@@ -69,7 +71,7 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	var popup = new google.maps.InfoWindow();
 
 	//function located at bottom of code so as not to make giant divide
-	var stations = makeStationArray();
+	stations = makeStationArray();
 
 	//var closest = findClosestStation(stations, mylat, mylng);
 
