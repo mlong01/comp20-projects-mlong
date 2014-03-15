@@ -68,7 +68,7 @@ function makeMarkers(map, myLoc) {
 	var stations = makeStationArray();
 
 	drawMarkers(map, stations);
-	//drawLines(map, stations);
+	drawLines(map, stations);
 }
 
 
