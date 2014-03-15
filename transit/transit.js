@@ -63,6 +63,16 @@ function makeMarkers(map, myLoc) {
 	});
 
 	meMarker.setMap(map);
+	var myLat = position.coords.latitude;
+	var myLng = position.coords.longitude;
+
+	google.maps.event.addListener(meMarker, 'click', function() {
+		infowindow.setContent('<h5>LOCATION:</h5></br>
+							  <h6>('+myLat+', '+myLng+')</br></br>
+							   <h5>CLOSEST STATION:</h5></br>
+							  <h6>TBD</h6>');
+		infowindow.open(map, meMarker);
+	})
 
 	//function located at bottom of code so as not to make giant divide
 	var stations = makeStationArray();
