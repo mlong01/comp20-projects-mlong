@@ -69,10 +69,7 @@ function makeMarkers(map, myLoc) {
 	var popup = new google.maps.InfoWindow();
 
 	google.maps.event.addListener(meMarker, 'click', function() {
-		popup.setContent('<h5>LOCATION:</h5></br>
-							  <h6>('+myLat+', '+myLng+')</br></br>
-							   <h5>CLOSEST STATION:</h5></br>
-							  <h6>TBD</h6>');
+		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+myLat+', '+myLng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>TBD</h6>');
 		popup.open(map, meMarker);
 	})
 
