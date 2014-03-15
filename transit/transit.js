@@ -52,9 +52,10 @@ function makeMarkers(map, myLoc) {
 	meMarker.setMap(map);
 
 	var stations = makeStationArray();
+	var length = stations.length;
 
-	console.log("Did you hold your data?");
-	console.log("Your line is " + tLine + ", your first stop is " + stations[0]['Station']);
+	console.log("The " + tLine + " line has " + length + " stops.");
+
 }
 
 
@@ -389,11 +390,7 @@ function makeStationArray() {
     		"Long":-71.113686
   		},]
 
-	} else {
-		alert("An unexpected error occurred. Please contact we_ignore_your_emails@nope.gov to resolve this issue.")
 	}
-
-	console.log("Your line is " + tLine + ", your first stop is " + stations[0]['Station']);
 
 	return stations;
 
