@@ -98,7 +98,7 @@ function drawMarkers(map, stations) {
 
 
 function drawLines(map, stations) {
-	var locArray;
+	var locArray = [];
 	var last = 0;
 	var color = '#FFFFFF'
 
@@ -130,9 +130,9 @@ function drawLines(map, stations) {
 
 function drawRedLine(map, stations) {
 	var color = '#FF0000';
-	var firstLine;
-	var secondLine;
-	var thirdLine;
+	var firstLine = [];
+	var secondLine = [];
+	var thirdLine = [];
 	var i;
 	var arCnt = 0;
 
