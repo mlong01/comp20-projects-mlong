@@ -13,13 +13,15 @@ function makeMap(position) {
 
 	var mapOptions = {
 		//temp coded out to allow local testing
-		/*
+		
 		center: new google.maps.LatLng(position.coords.latitude, 
 									   position.coords.longitude),
-		*/
+		/*
 		center: new google.maps.LatLng(42.413, 
 									   -71.1067),
+									   */
 		zoom: 12
+		
 	};
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"),
