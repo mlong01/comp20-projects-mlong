@@ -88,7 +88,7 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 function findClosestStation(stations, mylat, mylng) {
 	var last = 0;
 	var minInd = START;
-	var minDist	= calcDist(mylat, mylng, stations[START]['Lat'], stations[START]['Lng']);
+	var minDist	= calcDist(mylat, mylng, stations[START]['Lat'], stations[START]['Long']);
 	var tempDist;
 	
 	if(tLine == "red") {
@@ -100,7 +100,7 @@ function findClosestStation(stations, mylat, mylng) {
 	}
 
 	for(var i = 1; i < last; i++) {
-		tempDist = calcDist(mylat, mylng, stations[i]['Lat'], stations[i]['Lng']);
+		tempDist = calcDist(mylat, mylng, stations[i]['Lat'], stations[i]['Long']);
 		if(tempDist < minDist) {
 			minDist = tempDist;
 			minInd = i;
