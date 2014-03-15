@@ -170,9 +170,12 @@ function drawMarkers(map) {
 
     (function (i) {
         popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>' +
+                          '<table><tr><td>DESTINATION</td><td>ETA (in seconds)</td></tr>';
+
+        /*
                           '<h6>To see incoming and outgoing trains, purchase our in-app ' +
                           '$0.99 DLC';
-
+        */
         popup[i] = new google.maps.InfoWindow();
 
         google.maps.event.addListener(toPlace, 'click', function() {
@@ -338,6 +341,7 @@ function dataReady() {
 
 
 function makeStationArray() {
+    console.log(tLine);
 	if(tLine == "red") {
 		var stations = [
 		{
