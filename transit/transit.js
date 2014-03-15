@@ -179,7 +179,6 @@ function drawMarkers(map) {
         popup[i] = new google.maps.InfoWindow();
 
         google.maps.event.addListener(toPlace, 'click', function() {
-            console.log(i);
             popup[i].setContent(popupContent[i]);
             popup[i].open(map, this);
         });
@@ -342,7 +341,9 @@ function dataReady() {
 
 function makeStationArray() {
     console.log(tLine);
-	if(tLine == "red") {
+    if(tLine == undefined) {
+        alert("Data Retrieval Error - Please refresh page");
+    } else if(tLine == "red") {
 		var stations = [
 		{
     		"Line":"Red",
