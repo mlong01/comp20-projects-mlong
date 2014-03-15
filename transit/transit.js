@@ -68,16 +68,70 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 
 	var popup = new google.maps.InfoWindow();
 
-	google.maps.event.addListener(meMarker, 'click', function() {
-		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>TBD</h6>');
-		popup.open(map, meMarker);
-	})
-
 	//function located at bottom of code so as not to make giant divide
 	var stations = makeStationArray();
 
+	var closest = findClosestStation(stations, position);
+
+	google.maps.event.addListener(meMarker, 'click', function() {
+		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
+		popup.open(map, meMarker);
+	})
+
+
 	drawMarkers(map, stations);
 	drawLines(map, stations);
+}
+
+
+
+function findClosestStation(stations, position) {
+	var last = 0;
+	var minInd = START;
+	var minDist	= calcDist(position.coords.latitude, position.coords.longitude, stations[START]['Lat'], stations[START]['Lng']);
+	var tempDist;
+	
+	if(tLine == "red") {
+		last = RED_END_3;
+	} else if (tline == "blue") {
+		last = BLUE_END;
+	} else if (tline == "orange") {
+		last = ORAN_END;
+	}
+
+	for(var i = 1; i < last; i++) {
+		tempDist = calcDist(position.coords.latitude, position.coords.longitude, stations[i]['Lat'], stations[i]['Lng']);
+		if(tempDist < minDist) {
+			minDist = tempDist;
+			minInd = i;
+		}
+	}
+
+	var toRet = [minInd, minDist];
+
+	return toRet;
+}
+
+
+function calcDist(lat1, lon1, lat2, lon2) {
+		
+
+	var R = 6371; // km
+	var dLat = toRad(lat2-lat1);
+	var dLon = toRad(lon2-lon1);
+	var lat1 = toRad(lat1);
+	var lat2 = toRad(;at2);
+
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+	        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
+	return d;
+}
+
+
+function toRad(val) {
+	return val * Math.PI / 180;
 }
 
 
