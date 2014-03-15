@@ -44,6 +44,7 @@ function createMap(position) {
 
 
 function makeMarkers(map, myLoc) {
+	console.log(myLoc);
 	var meMarker = new google.maps.marker({
 		position: myLoc,
 		title: "My Location",
