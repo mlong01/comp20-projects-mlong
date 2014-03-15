@@ -1,39 +1,42 @@
-/*comment 1 for commit*/
+//Variables relating to the making of the map
+var map;
+var lat;
+var lng;
+var mapOptions = {
+	center: new google.maps.LatLng(position.coords.latitude, 
+								   position.coords.longitude),
+	zoom  : 12
+}
+
 
 function initialize() {
+	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	findData();
+	makeMap();
 	navigator.geolocation.getCurrentPosition(makeMap);
 }
 
 
-function makeMap(position) {
-
-	//Why do I always get an error, saying it can't read latitude,
-	//even though it can because the map finds my location?
-
-	var mapOptions = {
-		//temp coded out to allow local testing
-		
-		center: new google.maps.LatLng(position.coords.latitude, 
-									   position.coords.longitude),
-		/*
-		center: new google.maps.LatLng(42.413, 
-									   -71.1067),
-									   */
-		zoom: 12
-		
-	};
-
-	var map = new google.maps.Map(document.getElementById("map-canvas"),
-								  mapOptions);
+function makeMap() {
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(createMap);
+	} else {
+		alert("Geolocation is not supported by your browser");
+	}
 }
 
 
+function createMap(position) {
+	lat = position.coords.latitude;
+	lng = position.coords.longitude;
+	//draw info stuff
+}
 
 //Given the technical difficulties with XML requests, JSON strings will be hard-
 //coded in for the time being
 
 function findData() {
+	console.log("In findData");
 	var req = new XMLHttpRequest();
 	req.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);
 	req.onreadystatechange = dataReady;
@@ -50,16 +53,18 @@ function dataReady(req) {
 	// 3 = In progress
 	// 4 = Complete
 
+	console.log("in dataReady");
+
 	if (req.readyState == 4 && req.status == 200) { 
+		console.log("4 and 200");
 		trainSched = JSON.parse(req.responseText); 
 		tLine = trainSched['line']; 
  	} 
 	else if (req.readyState == 4 && req.status == 500){ 
+		console.log("4 and 500");
 		alert("Data Retrieval Error - Please refresh page");
 	} 
-
-	console.log(tLine);	
-	console.log(trainSched['line']);
+	console.log("Shoulda seen some numbers by now");
 }
 
 /*
@@ -77,7 +82,7 @@ function findData() {
 	}
 
 }
-*/
+
 function placeStations(station) {
 
 	parsed = JSON.parse(stations);
@@ -90,3 +95,4 @@ function placeStations(station) {
 
 google.maps.event.addDomListener(window, 'load', makeMap);
 
+*/
