@@ -56,7 +56,8 @@ function dataReady(req) {
 		alert("Data Retrieval Error - Please refresh page");
 	} 
 
-	console.log(tLine);
+	console.log(tLine);	
+	console.log(trainSched['line']);
 }
 
 /*
