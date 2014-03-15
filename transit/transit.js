@@ -153,7 +153,7 @@ function drawRedLine(map, stations) {
 	arCnt = 0;
 
 	//right side of the fork
-	secondLine[arCnt] = new google.maps.LatLng(stations[12]['Lat'], stations[12]['Long']);
+	thirdLine[arCnt] = new google.maps.LatLng(stations[12]['Lat'], stations[12]['Long']);
 	arCnt++;
 	for(i = RED_ST_3; i <= RED_END_3; i++) {
 		thirdLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
