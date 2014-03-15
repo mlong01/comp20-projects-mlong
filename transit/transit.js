@@ -71,7 +71,7 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	//function located at bottom of code so as not to make giant divide
 	var stations = makeStationArray();
 
-	var closest = findClosestStation(stations, position);
+	var closest = findClosestStation(stations, mylat, mylng);
 
 	google.maps.event.addListener(meMarker, 'click', function() {
 		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
@@ -85,10 +85,10 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 
 
 
-function findClosestStation(stations, position) {
+function findClosestStation(stations, mylat, mylng) {
 	var last = 0;
 	var minInd = START;
-	var minDist	= calcDist(position.coords.latitude, position.coords.longitude, stations[START]['Lat'], stations[START]['Lng']);
+	var minDist	= calcDist(mylat, mylng, stations[START]['Lat'], stations[START]['Lng']);
 	var tempDist;
 	
 	if(tLine == "red") {
@@ -100,7 +100,7 @@ function findClosestStation(stations, position) {
 	}
 
 	for(var i = 1; i < last; i++) {
-		tempDist = calcDist(position.coords.latitude, position.coords.longitude, stations[i]['Lat'], stations[i]['Lng']);
+		tempDist = calcDist(mylat, mylng, stations[i]['Lat'], stations[i]['Lng']);
 		if(tempDist < minDist) {
 			minDist = tempDist;
 			minInd = i;
