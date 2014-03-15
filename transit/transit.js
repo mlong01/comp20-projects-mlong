@@ -1,13 +1,13 @@
 //Variables relating to the making of the map
 //Mostly initialization - to be overwritten
-var mylat = 0;
-var mylng = 0;
-var myLoc = new google.maps.LatLng(mylat, mylng);
-var mapOptions = {
-	center: myLoc,
-	zoom  : 12
-};
-var map;
+//var mylat = 0;
+//var mylng = 0;
+//var myLoc = new google.maps.LatLng(mylat, mylng);
+//var mapOptions = {
+//	center: myLoc,
+//	zoom  : 12
+//};
+//var map;
 
 
 function initialize() {
@@ -28,10 +28,14 @@ function makeMap() {
 
 
 function createMap(position) {
-	mylat = position.coords.latitude;
-	mylng = position.coords.longitude;
-	myLoc = new google.maps.LatLng(mylat, mylng);
-	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	var mylat = position.coords.latitude;
+	var mylng = position.coords.longitude;
+	var myLoc = new google.maps.LatLng(mylat, mylng);
+	var mapOptions = {
+		center: myLoc,
+		zoom  : 12
+	};
+	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	//draw info stuff
 }
 
