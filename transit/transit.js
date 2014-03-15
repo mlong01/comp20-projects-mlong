@@ -5,6 +5,19 @@ var req;
 var trainSched = [];
 var tLine;
 
+const var START = 0;
+const var BLUE_END  = 12;
+const var ORAN_END  = 19;
+//red should go 0-12, then 13-16, then 17-21
+const var RED_END_1 = 12;
+const var RED_ST_2  = 13;
+const var RED_END_2 = 16;
+const var RED_ST_3  = 17;
+const var RED_END_3 = 21;
+
+var image = 'MBTA.png';
+
+
 
 function initialize() {
 	//map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -51,13 +64,75 @@ function makeMarkers(map, myLoc) {
 
 	meMarker.setMap(map);
 
-	console.log(tLine);
-
+	//function located at bottom of code so as not to make giant divide
 	var stations = makeStationArray();
-	var length = stations.length;
 
-	console.log("The " + tLine + " line has " + length + " stops.");
+	drawMarkers(map, stations);
+	//drawLines(map, stations);
+}
 
+
+function drawMarkers(map, stations) {
+	var last = 0;
+	if(tLine == "red") {
+		last = RED_END_3;
+	} else if(tLine == "blue") {
+		last = BLUE_END;
+	} else if (tLine == "orange") {
+		last = ORAN_END;
+	}
+
+	for(var i = START; i < last; i++) {
+		var loc = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
+		
+		var toPlace = new google.maps.Marker({
+			position: loc,
+			title: stations[i]['Station'],
+			icon: image
+		});
+
+		toPlace.setMap(map);
+	}
+}
+
+/*
+function drawLines(map, stations) {
+	if(tLine == "red") {
+		for(var i = START; )
+	} else if (tLine == "blue") {
+		for(var i = START; i < BLUE_END; i++)
+	} else if (tLine == "orange") {
+
+	}
+
+}
+*/
+
+
+function findData() {
+	req = new XMLHttpRequest();
+	req.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);
+	req.onreadystatechange = dataReady;
+	req.send(null);
+}
+
+
+
+function dataReady() { 
+	// The readyState numbers:
+	// 0 = not initialized
+	// 1 = Set up
+	// 2 = Sent
+	// 3 = In progress
+	// 4 = Complete
+
+	if (req.readyState == 4 && req.status == 200) { 
+		trainSched = JSON.parse(req.responseText); 
+		tLine = trainSched['line']; 
+ 	} 
+	else if (req.readyState == 4 && req.status == 500){ 
+		alert("Data Retrieval Error - Please refresh page");
+	} 
 }
 
 
@@ -395,29 +470,3 @@ function makeStationArray() {
 
 }
 
-
-function findData() {
-	req = new XMLHttpRequest();
-	req.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);
-	req.onreadystatechange = dataReady;
-	req.send(null);
-}
-
-
-
-function dataReady() { 
-	// The readyState numbers:
-	// 0 = not initialized
-	// 1 = Set up
-	// 2 = Sent
-	// 3 = In progress
-	// 4 = Complete
-
-	if (req.readyState == 4 && req.status == 200) { 
-		trainSched = JSON.parse(req.responseText); 
-		tLine = trainSched['line']; 
- 	} 
-	else if (req.readyState == 4 && req.status == 500){ 
-		alert("Data Retrieval Error - Please refresh page");
-	} 
-}
