@@ -5,15 +5,15 @@ var req;
 var trainSched = [];
 var tLine;
 
-const var START = 0;
-const var BLUE_END  = 12;
-const var ORAN_END  = 19;
+var START = 0;
+var BLUE_END  = 12;
+var ORAN_END  = 19;
 //red should go 0-12, then 13-16, then 17-21
-const var RED_END_1 = 12;
-const var RED_ST_2  = 13;
-const var RED_END_2 = 16;
-const var RED_ST_3  = 17;
-const var RED_END_3 = 21;
+var RED_END_1 = 12;
+var RED_ST_2  = 13;
+var RED_END_2 = 16;
+var RED_ST_3  = 17;
+var RED_END_3 = 21;
 
 var image = 'MBTA.png';
 
