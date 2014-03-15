@@ -9,6 +9,7 @@ var stations = [];
 
 //Popup windows when stations are called;
 var popup = [];
+var popupContent = [];
 
 var START = 0;
 var BLUE_END    = 12;
@@ -72,7 +73,7 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	//var mylat = position.coords.latitude;
 	//var mylng = position.coords.longitude;
 
-	var popup = new google.maps.InfoWindow();
+	var selfPopup = new google.maps.InfoWindow();
 
 	//function located at bottom of code so as not to make giant divide
 	stations = makeStationArray();
@@ -80,9 +81,9 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	var closest = findClosestStation(mylat, mylng);
 
 	google.maps.event.addListener(meMarker, 'click', function() {
-		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
+		selfPopup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
 		//popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>TBD</h6>');
-		popup.open(map, meMarker);
+		selfPopup.open(map, meMarker);
 	})
 
 
@@ -168,12 +169,11 @@ function drawMarkers(map) {
 		toPlace.setMap(map);
 
 		popup[i] = new google.maps.InfoWindow();
+    popupContent[i] = '<h2>'+stations[i]['Station']+'</h2>';
 
 		google.maps.event.addListener(toPlace, 'click', function() {
       console.log(i);
-			var content = '<h2>'+stations[i]['Station']+'</h2>';
-
-			popup[i].setContent(content);
+			popup[i].setContent(popupContent[i]);
 			popup[i].open(map, this);
 		});
 	}
