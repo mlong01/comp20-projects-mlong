@@ -340,7 +340,7 @@ function dataReady() {
 
 
 function makeStationArray() {
-    if((tLine != "red") || (tLine != "blue") || (tLine != "orange")) {
+    if((tLine != "red") && (tLine != "blue") && (tLine != "orange")) {
         alert("Data Retrieval Error - Please refresh page");
     } else if(tLine == "red") {
 		var stations = [
