@@ -3,8 +3,7 @@ var map;
 var lat;
 var lng;
 var mapOptions = {
-	center: new google.maps.LatLng(position.coords.latitude, 
-								   position.coords.longitude),
+	center: new google.maps.LatLng(lat, lng),
 	zoom  : 12
 }
 
