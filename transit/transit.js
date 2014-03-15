@@ -88,7 +88,9 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 function findClosestStation(stations, mylat, mylng) {
 	var last = 0;
 	var minInd = START;
-	var minDist	= calcDist(mylat, mylng, stations[0]['Lat'], stations[0]['Long']);
+	var patchLat = stations[0]['Lat'];
+	var patchLng = stations[0]['Long'];
+	var minDist	= calcDist(mylat, mylng, patchLat, patchLng);
 	var tempDist;
 	
 	if(tLine == "red") {
