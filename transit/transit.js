@@ -52,19 +52,19 @@ function createMap(position) {
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	
 	//draw info stuff
-	makeMarkers(map, myLoc);
+	makeMarkers(map, myLoc, mylat, mylng);
 }
 
 
-function makeMarkers(map, myLoc) {
+function makeMarkers(map, myLoc, mylat, mylng) {
     var meMarker = new google.maps.Marker({
 		position: myLoc,
 		title: "My Location",
 	});
 
 	meMarker.setMap(map);
-	var myLat = myLoc.coords.latitude;
-	var myLng = myLoc.coords.longitude;
+	//var mylat = position.coords.latitude;
+	//var mylng = position.coords.longitude;
 
 	var popup = new google.maps.InfoWindow();
 
