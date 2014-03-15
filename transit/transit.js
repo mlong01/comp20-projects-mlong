@@ -340,7 +340,6 @@ function dataReady() {
 
 
 function makeStationArray() {
-    console.log(tLine);
     if((tLine != "red") || (tLine != "blue") || (tLine != "orange")) {
         alert("Data Retrieval Error - Please refresh page");
     } else if(tLine == "red") {
