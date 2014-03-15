@@ -5,6 +5,8 @@ var req;
 var trainSched = [];
 var tLine;
 
+const var RED
+
 
 function initialize() {
 	//map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -51,6 +53,8 @@ function makeMarkers(map, myLoc) {
 
 	meMarker.setMap(map);
 
+	console.log(tLine);
+
 	var stations = makeStationArray();
 	var length = stations.length;
 
@@ -62,7 +66,6 @@ function makeMarkers(map, myLoc) {
 
 function makeStationArray() {
 	if(tLine == "red") {
-		alert("yeah red bro");
 		var stations = [
 		{
     		"Line":"Red",
@@ -197,7 +200,6 @@ function makeStationArray() {
     		"Long":-71.0011385
   		},]
 	} else if (tLine == "blue") {
-		alert("dat blue swag");
 		var stations = [
 		{
 	    	"Line":"Blue",
@@ -273,7 +275,6 @@ function makeStationArray() {
   		},]
 
 	} else if (tLine == "orange") {
-		alert("ew, orange?");
 		var stations = [
 		{
     		"Line":"Orange",
