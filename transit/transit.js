@@ -168,14 +168,31 @@ function drawMarkers(map) {
 
 		toPlace.setMap(map);
 
+    (function (i) {
+        popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>' +
+                          '<h6>To see incoming and outgoing trains, purchase our in-app ' +
+                          '$0.99 DLC';
+
+        popup[i] = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(toPlace, 'click' function() {
+            console.log(i);
+            popup[i].setContent(popupContent[i]);
+            popup[i].open(map, this);
+        });
+
+    })(i);
+
+/*
 		popup[i] = new google.maps.InfoWindow();
-    popupContent[i] = '<h2>'+stations[i]['Station']+'</h2>';
 
 		google.maps.event.addListener(toPlace, 'click', function() {
       console.log(i);
 			popup[i].setContent(popupContent[i]);
 			popup[i].open(map, this);
 		});
+
+*/
 	}
 }
 
