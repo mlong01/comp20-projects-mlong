@@ -39,11 +39,11 @@ function createMap(position) {
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	
 	//draw info stuff
-	makeMarkers();
+	makeMarkers(map, myLoc);
 }
 
 
-function makeMarkers() {
+function makeMarkers(map, myLoc) {
 	var meMarker = new google.maps.marker({
 		position: myLoc,
 		title: "My Location",
