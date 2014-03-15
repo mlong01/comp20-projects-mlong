@@ -4,7 +4,7 @@ var mylat = 0;
 var mylng = 0;
 var myLoc = new google.maps.LatLng(mylat, mylng);
 var mapOptions = {
-	center: myLoc;
+	center: myLoc,
 	zoom  : 12
 };
 var map;
