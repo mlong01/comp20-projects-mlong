@@ -73,8 +73,8 @@ function makeMarkers(map, myLoc) {
 
 
 function drawMarkers(map, stations) {
-	console.log("here");
 	var last = 0;
+	
 	if(tLine == "red") {
 		last = RED_END_3;
 	} else if(tLine == "blue") {
@@ -82,10 +82,9 @@ function drawMarkers(map, stations) {
 	} else if (tLine == "orange") {
 		last = ORAN_END;
 	}
-	console.log("last = " + last);
+
 	for(var i = START; i < last; i++) {
 		var loc = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
-		console.log("set loc @ " + stations[i]['Lat'] + " " + stations[i]['Long']);
 		
 		var toPlace = new google.maps.Marker({
 			position: loc,
@@ -97,18 +96,92 @@ function drawMarkers(map, stations) {
 	}
 }
 
-/*
-function drawLines(map, stations) {
-	if(tLine == "red") {
-		for(var i = START; )
-	} else if (tLine == "blue") {
-		for(var i = START; i < BLUE_END; i++)
-	} else if (tLine == "orange") {
 
+function drawLines(map, stations) {
+	var locArray;
+	var last = 0;
+	var color = '#FFFFFF'
+
+	if(tLine == "red") {
+		drawRedLine(map, stations);
+	} else if (tLine == "blue") {
+		last = BLUE_END;
+		color = '#0000FF';
+	} else if (tLine == "orange") {
+		last = ORAN_END;
+		color = '#FF3300';
 	}
 
+	for(var i = START; i < ORAN_END; i++) {
+			locArray[i] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
+	}
+
+	var colorLine = new google.maps.polyline({
+		path: locArray,
+		strokeColor: color,
+		strokeOpacity: 1.0,
+		strokeWeight: 6
+	});
+
+	colorLine.setMap(map);
 }
-*/
+
+
+
+function drawRedLine(map, stations) {
+	var color = '#FF0000';
+	var firstLine;
+	var secondLine;
+	var thirdLine;
+	var i;
+	var arCnt = 0;
+
+	for(i = START; i <= RED_END_1; i++) {
+		firstLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
+		arCnt++;
+	}
+
+	arCnt = 0;
+
+	for(i = RED_ST_2; i <= RED_END_2; i++) {
+		secondLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
+		arCnt++;
+	}
+	
+	arCnt = 0;
+
+		for(i = RED_ST_3; i <= RED_END_3; i++) {
+		thirdLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
+		arCnt++;
+	}
+
+	var colorLine1 = new google.maps.polyline({
+		path: firstLine,
+		strokeColor: color,
+		strokeOpacity: 1.0,
+		strokeWeight: 6
+	});
+
+	var colorLine2 = new google.maps.polyline({
+		path: secondLine,
+		strokeColor: color,
+		strokeOpacity: 1.0,
+		strokeWeight: 6
+	});
+
+	var colorLine3 = new google.maps.polyline({
+		path: thirdLine,
+		strokeColor: color,
+		strokeOpacity: 1.0,
+		strokeWeight: 6
+	});
+
+	colorLine1.setMap(map);
+	colorLine2.setMap(map);
+	colorLine3.setMap(map);
+	
+}
+
 
 
 function findData() {
