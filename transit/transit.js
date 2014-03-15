@@ -5,8 +5,6 @@ var req;
 var trainSched = [];
 var tLine;
 
-const var RED
-
 
 function initialize() {
 	//map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
