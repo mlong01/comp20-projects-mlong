@@ -172,7 +172,7 @@ function drawMarkers(map) {
         popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>' +
                           '<table><tr><td>DESTINATION</td><td>ETA (in seconds)</td></tr>';
 
-        for(var trains = 0; trips < trainSched['Schedule'].length; trains++) {
+        for(var trains = 0; trains < trainSched['Schedule'].length; trains++) {
             for(var stops = 0; stops < trainSched['Schedule'][trains]['Predictions'].length; stops++) {
                 if(trainSched['Schedule'][trains]['Predictions'][stops]['Stop'] == stations[i]['Station']) {
                     popupContent[i] += '<tr><td>'+trainSched['Schedule'][trains]['Destination']+'</td>' +
