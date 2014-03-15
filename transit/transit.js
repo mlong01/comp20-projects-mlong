@@ -44,8 +44,7 @@ function createMap(position) {
 
 
 function makeMarkers(map, myLoc) {
-	console.log(myLoc);
-	var meMarker = new google.maps.marker({
+    var meMarker = new google.maps.Marker({
 		position: myLoc,
 		title: "My Location",
 	});
@@ -55,8 +54,6 @@ function makeMarkers(map, myLoc) {
 
 
 function findData() {
-	console.log("In findData");
-
 	req = new XMLHttpRequest();
 	req.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);
 	req.onreadystatechange = dataReady;
@@ -80,5 +77,4 @@ function dataReady() {
 	else if (req.readyState == 4 && req.status == 500){ 
 		alert("Data Retrieval Error - Please refresh page");
 	} 
-	console.log(tLine);
 }
