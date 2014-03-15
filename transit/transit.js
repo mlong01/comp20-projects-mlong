@@ -1,3 +1,11 @@
+//Variables for XML stuff that's struggling mightily
+//Perhaps because of frame of reference?
+
+var req;
+var trainSched = [];
+var tLine;
+
+
 function initialize() {
 	//map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	findData();
@@ -33,12 +41,11 @@ function createMap(position) {
 	//draw info stuff
 }
 
-//Given the technical difficulties with XML requests, JSON strings will be hard-
-//coded in for the time being
 
 function findData() {
 	console.log("In findData");
-	var req = new XMLHttpRequest();
+
+	req = new XMLHttpRequest();
 	req.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);
 	req.onreadystatechange = dataReady;
 	req.send(null);
@@ -46,7 +53,7 @@ function findData() {
 
 
 
-function dataReady(req) { 
+function dataReady() { 
 	// The readyState numbers:
 	// 0 = not initialized
 	// 1 = Set up
@@ -54,46 +61,12 @@ function dataReady(req) {
 	// 3 = In progress
 	// 4 = Complete
 
-	console.log("in dataReady");
-
 	if (req.readyState == 4 && req.status == 200) { 
-		console.log("4 and 200");
 		trainSched = JSON.parse(req.responseText); 
 		tLine = trainSched['line']; 
  	} 
 	else if (req.readyState == 4 && req.status == 500){ 
-		console.log("4 and 500");
 		alert("Data Retrieval Error - Please refresh page");
 	} 
-	console.log("Shoulda seen some numbers by now");
+	console.log(tLine);
 }
-
-/*
-function findData() {
-	station = 'red';
-
-	if(station == 'red') {
-		placeStations('red');
-	} else if (station == 'blue') {
-		placeStations('blue');
-	} else if (station == 'orange') {
-		placeStations('orange');
-	} else {
-		//handle error
-	}
-
-}
-
-function placeStations(station) {
-
-	parsed = JSON.parse(stations);
-	length = parsed.length;
-
-	console.log(stations);
-	console.log(length);
-
-}
-
-google.maps.event.addDomListener(window, 'load', makeMap);
-
-*/
