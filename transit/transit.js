@@ -85,7 +85,7 @@ function drawMarkers(map, stations) {
 	console.log("last = " + last);
 	for(var i = START; i < last; i++) {
 		var loc = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
-		console.log("set loc @ " + loc.Lat + " " + loc.Lng);
+		console.log("set loc @ " + stations[i]['Lat'] + " " + stations[i]['Long']);
 		
 		var toPlace = new google.maps.Marker({
 			position: loc,
