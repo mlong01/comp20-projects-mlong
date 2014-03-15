@@ -73,6 +73,7 @@ function makeMarkers(map, myLoc) {
 
 
 function drawMarkers(map, stations) {
+	console.log("here");
 	var last = 0;
 	if(tLine == "red") {
 		last = RED_END_3;
@@ -81,9 +82,10 @@ function drawMarkers(map, stations) {
 	} else if (tLine == "orange") {
 		last = ORAN_END;
 	}
-
+	console.log("last = " + last);
 	for(var i = START; i < last; i++) {
 		var loc = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
+		console.log("set loc @ " + loc.Lat + " " + loc.Lng);
 		
 		var toPlace = new google.maps.Marker({
 			position: loc,
