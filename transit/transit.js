@@ -76,8 +76,8 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	//var closest = findClosestStation(stations, mylat, mylng);
 
 	google.maps.event.addListener(meMarker, 'click', function() {
-		//popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
-		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>TBD</h6>');
+		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
+		//popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>TBD</h6>');
 		popup.open(map, meMarker);
 	})
 
