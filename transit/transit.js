@@ -136,12 +136,16 @@ function drawRedLine(map, stations) {
 	var i;
 	var arCnt = 0;
 
+	console.log("probably here");
+
 	//First main branch, before fork
 	for(i = START; i <= RED_END_1; i++) {
 		firstLine[arCnt] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
 		arCnt++;
 	}
 	arCnt = 0;
+
+	console.log("here first?");
 
 	//left side of the fork
 	secondLine[arCnt] = new google.maps.LatLng(stations[12]['Lat'], stations[12]['Long']);
