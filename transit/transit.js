@@ -7,7 +7,7 @@ var tLine;
 
 var stations = [];
 
-//Popup windows when stations are called;
+//Popup windows when stations are clicked;
 var popup = [];
 var popupContent = [];
 
@@ -27,7 +27,6 @@ var image = 'MBTA.png';
 
 
 function initialize() {
-	//map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	findData();
 	makeMap();
 	navigator.geolocation.getCurrentPosition(makeMap);
@@ -47,10 +46,7 @@ function createMap(position) {
 	var mylat = position.coords.latitude;
 	var mylng = position.coords.longitude;
 	
-	//CORRECT CODE, commenting out because currently working in Georgia, which is difficult
-	//var myLoc = new google.maps.LatLng(mylat, mylng);
-
-	var myLoc = new google.maps.LatLng(42.4183, -71.1067)
+	var myLoc = new google.maps.LatLng(mylat, mylng);
 
 	var mapOptions = {
 		center: myLoc,
@@ -70,8 +66,6 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	});
 
 	meMarker.setMap(map);
-	//var mylat = position.coords.latitude;
-	//var mylng = position.coords.longitude;
 
 	var selfPopup = new google.maps.InfoWindow();
 
@@ -82,14 +76,12 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 
 	google.maps.event.addListener(meMarker, 'click', function() {
 		selfPopup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
-		//popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>TBD</h6>');
 		selfPopup.open(map, meMarker);
 	})
 
 
 	drawMarkers(map);
 	drawLines(map);
-	//addTables(map);
 }
 
 
@@ -168,48 +160,38 @@ function drawMarkers(map) {
 
 		toPlace.setMap(map);
 
-    (function (i) {
+        (function (i) {
         
-        popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>';
-        /* Attempted adding of stops and ETA, currently non-functional
-        popupContent[i] += '<table><tr><td>DESTINATION</td><td>ETA (in seconds)</td></tr>';
+            popupContent[i] = '<h2>'+stations[i]['Station']+'</h2></br>';
+            /* Attempted adding of stops and ETA, currently non-functional
+            popupContent[i] += '<table><tr><td>DESTINATION</td><td>ETA (in seconds)</td></tr>';
 
-        for(var trains = 0; trains < trainSched['Schedule'].length; trains++) {
-            for(var stops = 0; stops < trainSched['Schedule'][trains]['Predictions'].length; stops++) {
-                if(trainSched['Schedule'][trains]['Predictions'][stops]['Stop'] == stations[i]['Station']) {
-                    popupContent[i] += '<tr><td>'+trainSched['Schedule'][trains]['Destination']+'</td>' +
-                                       '<td>'+Math.floor(trainSched['Schedule'][trains]['Predictions'][stops]['Seconds']/60)+
-                                       ':' + trainSched['Schedule'][trains]['Predictions'][stops]['Seconds']%60 + '</td></tr>';
+            for(var trains = 0; trains < trainSched['Schedule'].length; trains++) {
+                for(var stops = 0; stops < trainSched['Schedule'][trains]['Predictions'].length; stops++) {
+                    if(trainSched['Schedule'][trains]['Predictions'][stops]['Stop'] == stations[i]['Station']) {
+                        popupContent[i] += '<tr><td>'+trainSched['Schedule'][trains]['Destination']+'</td>' +
+                                           '<td>'+Math.floor(trainSched['Schedule'][trains]['Predictions'][stops]['Seconds']/60)+
+                                           ':' + trainSched['Schedule'][trains]['Predictions'][stops]['Seconds']%60 + '</td></tr>';
+                    }
                 }
             }
-        }
 
-        popupContent[i] += '</table>';
+            popupContent[i] += '</table>';
 
-        */
+            */
 
-        popupContent[i] = '</table></br>To see incoming and outgoing trains, purchase our in-app ' +
-                           '$0.99 DLC';
+            popupContent[i] += '</table></br>To see incoming and outgoing trains, purchase our in-app ' +
+                               '$0.99 DLC';
 
-        popup[i] = new google.maps.InfoWindow();
+            popup[i] = new google.maps.InfoWindow();
 
-        google.maps.event.addListener(toPlace, 'click', function() {
-            popup[i].setContent(popupContent[i]);
-            popup[i].open(map, this);
-        });
+            google.maps.event.addListener(toPlace, 'click', function() {
+                popup[i].setContent(popupContent[i]);
+                popup[i].open(map, this);
+            });
 
-    })(i);
+        })(i);
 
-/*
-		popup[i] = new google.maps.InfoWindow();
-
-		google.maps.event.addListener(toPlace, 'click', function() {
-      console.log(i);
-			popup[i].setContent(popupContent[i]);
-			popup[i].open(map, this);
-		});
-
-*/
 	}
 }
 
@@ -303,27 +285,6 @@ function drawRedLine(map) {
 	colorLine3.setMap(map);
 	
 }
-
-
-/*
-function addTables(map) {
-	var last = 0;
-	
-	if(tLine == "red") {
-		last = RED_ALL_END;
-	} else if(tLine == "blue") {
-		last = BLUE_END;
-	} else if (tLine == "orange") {
-		last = ORAN_END;
-	}
-
-	for(var i = START; i < last; i++) {
-
-	}
-
-
-}
-*/
 
 
 
