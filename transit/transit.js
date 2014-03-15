@@ -7,6 +7,9 @@ var tLine;
 
 var stations = [];
 
+//Popup windows when stations are called;
+var popup = [];
+
 var START = 0;
 var BLUE_END    = 12;
 var ORAN_END    = 19;
@@ -153,8 +156,6 @@ function drawMarkers(map) {
 		last = ORAN_END;
 	}
 
-  var popup = [];
-
 	for(var i = START; i < last; i++) {
 		var loc = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
 		
@@ -169,6 +170,7 @@ function drawMarkers(map) {
 		popup[i] = new google.maps.InfoWindow();
 
 		google.maps.event.addListener(toPlace, 'click', function() {
+      console.log(i);
 			var content = '<h2>'+stations[i]['Station']+'</h2>';
 
 			popup[i].setContent(content);
