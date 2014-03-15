@@ -16,12 +16,12 @@ body {
 
 h5 {
 	text-align: center;
-	margin: 0;
-	padding: 3px;
+	margin-bottom: 1px;
+	padding: 0;
 }
 
 h6 {
 	text-align: center;
-	margin: 0;
-	padding: 0px;
+	margin-top: 1px;
+	padding: 0;
 }
