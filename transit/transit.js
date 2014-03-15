@@ -116,7 +116,7 @@ function drawLines(map, stations) {
 			locArray[i] = new google.maps.LatLng(stations[i]['Lat'], stations[i]['Long']);
 	}
 
-	var colorLine = new google.maps.polyline({
+	var colorLine = new google.maps.Polyline({
 		path: locArray,
 		strokeColor: color,
 		strokeOpacity: 1.0,
@@ -155,21 +155,21 @@ function drawRedLine(map, stations) {
 		arCnt++;
 	}
 
-	var colorLine1 = new google.maps.polyline({
+	var colorLine1 = new google.maps.Polyline({
 		path: firstLine,
 		strokeColor: color,
 		strokeOpacity: 1.0,
 		strokeWeight: 6
 	});
 
-	var colorLine2 = new google.maps.polyline({
+	var colorLine2 = new google.maps.Polyline({
 		path: secondLine,
 		strokeColor: color,
 		strokeOpacity: 1.0,
 		strokeWeight: 6
 	});
 
-	var colorLine3 = new google.maps.polyline({
+	var colorLine3 = new google.maps.Polyline({
 		path: thirdLine,
 		strokeColor: color,
 		strokeOpacity: 1.0,
