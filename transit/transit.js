@@ -73,7 +73,7 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	//function located at bottom of code so as not to make giant divide
 	stations = makeStationArray();
 
-	var closest = findClosestStation(stations, mylat, mylng);
+	var closest = findClosestStation(mylat, mylng);
 
 	google.maps.event.addListener(meMarker, 'click', function() {
 		popup.setContent('<h5>LOCATION:</h5></br> <h6>('+mylat+', '+mylng+')</br></br><h5>CLOSEST STATION:</h5></br><h6>'+stations[closest[0]]['Station']+', '+closest[1]+' miles away</h6>');
@@ -82,14 +82,14 @@ function makeMarkers(map, myLoc, mylat, mylng) {
 	})
 
 
-	drawMarkers(map, stations);
-	drawLines(map, stations);
-	addTables(map, stations);
+	drawMarkers(map);
+	drawLines(map);
+	addTables(map);
 }
 
 
 
-function findClosestStation(stations, mylat, mylng) {
+function findClosestStation(mylat, mylng) {
 	var last = 0;
 	var minInd = START;
 	var patchLat = stations[0]['Lat'];
@@ -141,8 +141,7 @@ function toRad(val) {
 
 
 
-
-function drawMarkers(map, stations) {
+function drawMarkers(map) {
 	var last = 0;
 	
 	if(tLine == "red") {
@@ -176,13 +175,13 @@ function drawMarkers(map, stations) {
 }
 
 
-function drawLines(map, stations) {
+function drawLines(map) {
 	var locArray = [];
 	var last = 0;
 	var color = '#FFFFFF'
 
 	if(tLine == "red") {
-		drawRedLine(map, stations);
+		drawRedLine(map);
 	} else if (tLine == "blue") {
 		last = BLUE_END;
 		color = '#0000FF';
@@ -207,7 +206,7 @@ function drawLines(map, stations) {
 
 
 
-function drawRedLine(map, stations) {
+function drawRedLine(map) {
 	var color = '#FF0000';
 	var firstLine = [];
 	var secondLine = [];
@@ -268,7 +267,7 @@ function drawRedLine(map, stations) {
 
 
 
-function addTables(map, stations) {
+function addTables(map) {
 	var last = 0;
 	
 	if(tLine == "red") {
