@@ -1,15 +1,3 @@
-//Variables relating to the making of the map
-//Mostly initialization - to be overwritten
-//var mylat = 0;
-//var mylng = 0;
-//var myLoc = new google.maps.LatLng(mylat, mylng);
-//var mapOptions = {
-//	center: myLoc,
-//	zoom  : 12
-//};
-//var map;
-
-
 function initialize() {
 	//map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	findData();
@@ -30,12 +18,18 @@ function makeMap() {
 function createMap(position) {
 	var mylat = position.coords.latitude;
 	var mylng = position.coords.longitude;
-	var myLoc = new google.maps.LatLng(mylat, mylng);
+	
+	//CORRECT CODE, commenting out because currently working in Georgia, which is difficult
+	//var myLoc = new google.maps.LatLng(mylat, mylng);
+
+	var myLoc = new google.maps.LatLng(42.4183, -71.1067)
+
 	var mapOptions = {
 		center: myLoc,
 		zoom  : 12
 	};
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	
 	//draw info stuff
 }
 
