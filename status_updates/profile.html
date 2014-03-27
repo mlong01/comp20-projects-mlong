@@ -14,14 +14,10 @@
 				var msgnode = document.createTextNode(msg);
 				para.appendChild(msgnode);
 
+				var status = document.getElementById('status');
+				status.insertBefore(para, status.firstChild);
 			}
 
-		}
-
-		function put_in_storage() {
-
-
-			updatestatus();			
 		}
 
 		function updatestatus() {
