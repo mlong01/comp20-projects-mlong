@@ -5,7 +5,43 @@
 <head>
 <title>Fecesbook</title>
 	<script>
+		function init() {
+			console.log("into init");
+
+			for(key in localStorage) {
+				var para = document.createElement("p");
+				var msg = localStorage[key];
+				var msgnode = document.createTextNode(msg);
+				para.appendChild(msgnode);
+
+			}
+
+		}
+
+		function put_in_storage() {
+
+
+			updatestatus();			
+		}
+
 		function updatestatus() {
+			var status = document.getElementById('status');
+			var msg = document.getElementById('msg').value;
+
+			var para = document.createElement("p");
+			var dateString = get_date_string();
+			var msgnode = document.createTextNode(dateString + ' - ' + msg);
+			para.appendChild(msgnode);
+			
+			document.getElementById.value = " ";
+			status.insertBefore(para, status.firstChild);
+
+			document.getElementById('msg').value = "";
+
+			localStorage[dateString] = (dateString + ' - ' + msg);
+		}
+
+		function get_date_string() {
 			var today = new Date();
 			var month = today.getMonth() + 1;
 			var day = today.getDate();
@@ -13,22 +49,15 @@
 			var hour = today.getHours();
 			var min = today.getMinutes();
 
-			var status = document.getElementById('status');
-			var msg = document.getElementById('msg').value;
-
-			var para = document.createElement("p");
-			var msgnode = document.createTextNode(month + '/' + day + '/' + year + ' ' + hour + ':' + min + ' - ' + msg);
-			para.appendChild(msgnode);
-			
-			document.getElementById.value = " ";
-			status.insertBefore(para, status.firstChild);
-
-			document.getElementById('msg').value = "";
+			var msgnode = (month + '/' + day + '/' + year + ' ' + hour + ':' + min);
+			return msgnode;
 		}
+
+
 	</script>
 </head>
 
-<body>
+<body onload="init()">
 	<h1>Fecebook</h1>
 	<div id="nav">
 		<ul>
@@ -41,7 +70,7 @@
 		</ul>
 	</div>
 	<h2 id="fullname">Barney Gumble</h2>
-	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="updatestatus()"/></h3>
+	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="put_in_storage()"/></h3>
 	<h3>Updates</h3>
 	<div id="status">
 	</div>
