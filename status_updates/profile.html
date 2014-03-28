@@ -11,22 +11,19 @@
 		}
 
 		function put_in_storage() {
-
-
-			updatestatus();			
-		}
-
-		function updatestatus() {
 			var status = document.getElementById('status');
 			var msg = document.getElementById('msg').value;
 			var dayTime = get_date_string();
 
+			updatestatus(msg, dayTime);			
+		}
+
+		function updatestatus(msg, dayTime) {
 			var para = document.createElement("p");
-			//var msgnode = document.createTextNode(month + '/' + day + '/' + year + ' ' + hour + ':' + min + ' - ' + msg);
 			var msgnode = document.createTextNode(dayTime + ' - ' + msg);
 			para.appendChild(msgnode);
 			
-			document.getElementById.value = " ";
+			var status = document.getElementById('status');
 			status.insertBefore(para, status.firstChild);
 
 			document.getElementById('msg').value = "";
