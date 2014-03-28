@@ -5,21 +5,25 @@
 <head>
 <title>Fecesbook</title>
 	<script>
-	//DAMNIT
-		function updatestatus() {
-			var today = new Date();
-			var month = today.getMonth() + 1;
-			var day = today.getDate();
-			var year = today.getFullYear();
-			var hour = today.getHours();
-			var min = today.getMinutes();
+		function init() {
+			console.log("into init");
+			
+		}
 
+		function put_in_storage() {
+
+
+			updatestatus();			
+		}
+
+		function updatestatus() {
 			var status = document.getElementById('status');
 			var msg = document.getElementById('msg').value;
+			var dayTime = get_date_string();
 
 			var para = document.createElement("p");
-			var msgnode = document.createTextNode(month + '/' + day + '/' + year + ' ' + hour + ':' + min + ' - ' + msg);
-
+			//var msgnode = document.createTextNode(month + '/' + day + '/' + year + ' ' + hour + ':' + min + ' - ' + msg);
+			var msgnode = document.createTextNode(dayTime + ' - ' + msg);
 			para.appendChild(msgnode);
 			
 			document.getElementById.value = " ";
@@ -27,10 +31,24 @@
 
 			document.getElementById('msg').value = "";
 		}
+
+		function get_date_string()
+		{
+			var today = new Date();
+			var month = today.getMonth() + 1;
+			var day = today.getDate();
+			var year = today.getFullYear();
+			var hour = today.getHours();
+			var min = today.getMinutes();
+
+			var msgnode = (month + '/' + day + '/' + year + ' ' + hour + ':' + min);
+			console.log(msgnode);
+			return msgnode;
+		}
 	</script>
 </head>
 
-<body>
+<body onload="init()">
 	<h1>Fecebook</h1>
 	<div id="nav">
 		<ul>
@@ -43,7 +61,7 @@
 		</ul>
 	</div>
 	<h2 id="fullname">Barney Gumble</h2>
-	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="updatestatus()"/></h3>
+	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="put_in_storage()"/></h3>
 	<h3>Updates</h3>
 	<div id="status">
 	</div>
