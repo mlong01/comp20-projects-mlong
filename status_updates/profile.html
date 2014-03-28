@@ -7,6 +7,10 @@
 	<script>
 		function init() {
 			console.log("into init");
+
+			for(key in localStorage) {
+				updatestatus(localStorage[key]);
+			}
 			
 		}
 
@@ -17,7 +21,9 @@
 
 			msg = (dayTime + ' - ' + msg);
 
-			localStorage.setItem(dayTime, msg);
+			var keyTime = new Date().getTime();
+
+			localStorage.setItem(keyTime, msg);
 
 			updatestatus(msg);			
 		}
@@ -45,7 +51,7 @@
 			var msgnode = (month + '/' + day + '/' + year + ' ' + hour + ':' + min);
 			return msgnode;
 		}
-		
+
 	</script>
 </head>
 
