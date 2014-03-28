@@ -12,15 +12,19 @@
 
 		function put_in_storage() {
 			var status = document.getElementById('status');
-			var msg = document.getElementById('msg').value;
 			var dayTime = get_date_string();
+			var msg = document.getElementById('msg').value;
 
-			updatestatus(msg, dayTime);			
+			msg = (dayTime + ' - ' + msg);
+
+			localStorage.setItem(dayTime, msg);
+
+			updatestatus(msg);			
 		}
 
-		function updatestatus(msg, dayTime) {
+		function updatestatus(msg) {
 			var para = document.createElement("p");
-			var msgnode = document.createTextNode(dayTime + ' - ' + msg);
+			var msgnode = document.createTextNode(msg);
 			para.appendChild(msgnode);
 			
 			var status = document.getElementById('status');
@@ -39,9 +43,9 @@
 			var min = today.getMinutes();
 
 			var msgnode = (month + '/' + day + '/' + year + ' ' + hour + ':' + min);
-			console.log(msgnode);
 			return msgnode;
 		}
+		
 	</script>
 </head>
 
