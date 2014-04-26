@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Variables for XML stuff that's struggling mightily
 //Perhaps because of frame of reference?
 
@@ -6,6 +7,14 @@ var trainSched = [];
 var tLine;
 
 var stations = [];
+=======
+/*comment 3 for committing*/
+function makeMap(position) {
+
+	//Find Lat + lng with geolocation, then do 
+	var lat = position.coords.latitude;
+	var lng = position.coords.longitude;
+>>>>>>> master
 
 //Popup windows when stations are clicked;
 var popup = [];
@@ -49,8 +58,13 @@ function createMap(position) {
 	var myLoc = new google.maps.LatLng(mylat, mylng);
 
 	var mapOptions = {
+<<<<<<< HEAD
 		center: myLoc,
 		zoom  : 12
+=======
+		center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+		zoom: 12
+>>>>>>> master
 	};
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	

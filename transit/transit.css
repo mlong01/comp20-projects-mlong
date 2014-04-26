@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 /*comment 1 for commit*/
 html { 
 	height: 100% 
 }
+=======
+/*comment 3 for committing*/
+html { height: 100% }
+>>>>>>> master
 	
 body { 
 	height: 100%; 

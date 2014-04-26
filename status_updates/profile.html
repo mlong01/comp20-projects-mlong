@@ -7,6 +7,7 @@
 	<script>
 		function init() {
 			for(key in localStorage) {
+<<<<<<< HEAD
 				var para = document.createElement("p");
 				var msg = localStorage[key];
 				var msgnode = document.createTextNode(msg);
@@ -19,15 +20,38 @@
 		}
 
 		function updatestatus() {
+=======
+				updatestatus(localStorage[key]);
+			}
+			
+		}
+
+		function put_in_storage() {
+>>>>>>> master
 			var status = document.getElementById('status');
+			var dayTime = get_date_string();
 			var msg = document.getElementById('msg').value;
 
+			msg = (dayTime + ' - ' + msg);
+
+			var keyTime = new Date().getTime();
+
+			localStorage.setItem(keyTime, msg);
+
+			updatestatus(msg);			
+		}
+
+		function updatestatus(msg) {
 			var para = document.createElement("p");
+<<<<<<< HEAD
 			var dateString = get_date_string();
 			var msgnode = document.createTextNode(dateString + ' - ' + msg);
+=======
+			var msgnode = document.createTextNode(msg);
+>>>>>>> master
 			para.appendChild(msgnode);
 			
-			document.getElementById.value = " ";
+			var status = document.getElementById('status');
 			status.insertBefore(para, status.firstChild);
 
 			document.getElementById('msg').value = "";
@@ -35,7 +59,12 @@
 			localStorage[dateString] = (dateString + ' - ' + msg);
 		}
 
+<<<<<<< HEAD
 		function get_date_string() {
+=======
+		function get_date_string()
+		{
+>>>>>>> master
 			var today = new Date();
 			var month = today.getMonth() + 1;
 			var day = today.getDate();
@@ -47,7 +76,10 @@
 			return msgnode;
 		}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 	</script>
 </head>
 
@@ -64,7 +96,7 @@
 		</ul>
 	</div>
 	<h2 id="fullname">Barney Gumble</h2>
-	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="updatestatus()"/></h3>
+	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="put_in_storage()"/></h3>
 	<h3>Updates</h3>
 	<div id="status">
 	</div>
