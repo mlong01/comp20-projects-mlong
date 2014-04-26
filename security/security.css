@@ -5,6 +5,7 @@ html {
 h1 {
 	font-size: 60px;
 	text-align: center;
+	padding: 0px;
 }
 
 h3 {
@@ -21,4 +22,51 @@ h5 {
 	padding-left: 80px;
 	text-decoration: underline;
 	color: #000066;
+}
+
+p {
+	padding-left: 120px;
+	padding-right: 120px;
+}
+
+ul {
+	list-style-type: square;
+	padding-left: 140px;
+	padding-right: 120px;
+}
+
+img {
+	border-style: solid;
+	border-radius: 20px;
+	border-color: #000000;
+	vertical-align;
+}
+
+#credit_tag{
+	font-size: 30px;
+	font-style: italic;
+	font-family: monospace;
+	color: #888888;
+	text-align: center;
+	position: relative;
+	top: -40px;
+}
+
+#high {
+	font-weight: bold;
+	color: #FF0000;
+}
+
+#medium {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #FFBB00;
+	padding-bottom: 0px;
+}
+
+#low {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #0000FF;
+	padding-bottom: 0px;
 }
