@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2048 ScoreCenter Assessment</title>
+	<link rel="stylesheet" type="text/css" href="security.css"></link>
+</head>
+
+<body>
+	<h1>SECURITY ASSESSMENT</h1>
+		<div id="credit_tag">assessment performed by <a href="http://mlong01.github.io" target="_blank">Matt Long</a></div>
+
+	<h3>Introduction</h3>
+
+		<p>Let's face it. Everybody wants to make an app. The internet is an endless realm of possibility, and everybody wants in.
+		   Some people have the knowledge to break onto the scene, like my client, Nicki Thomson. Unfortunately, not everybody on the internet is the nicest guy on the block. There are some malicioius souls out there, driven by the sole desire to break what 
+		   they can find. 
+
+		   That's where I come in. Nicki developed an app to keep track of high scores in the hit game 
+		   <a href="http://gabrielecirulli.github.io/2048/" target="_blank">2048</a>, and it's a masterpiece of functionality.
+		   Scores get stored in descending order and get sent upon the game's completion. Unfortunately, the website leaves itself
+		   open to a couple malicious attacks, which I've documented below.
+		</p>
+
+	<h3>Methodology</h3>
+
+		<p>The first technique I used was black box testing. Nicki gave me access to her code, and I tried a number of routine attacks
+		   on her code, the results of which are found below, using curl scripts - the basic tools available to any malicious hacker looking
+		   to take down a site. After the black box testing, I reviewed the code of the app being assessed for other potential security
+		   concerns, both on the server-side and available to the public.
+		</p>
+
+	<h3>Abstract of Finding</h3>
+
+		<p>Nicki did a good job avoiding rookie mistakes, such as allowing users to input malicious javascript code to take control of the
+		   code. There were still a couple vulnerabilities I was able to find, however. The app seems to not have any limit to the number of
+		   entries the database holds.
+
+	<h3>Issues Found</h3>
+		<h5>Issue</h5>
+			<ul><li>Uncapped Database Storage</li></ul>
+		<h5>Location</h5>
+			<p>At database document insertion</p>
+		<h5>Severity of Issue</h5>
+			<p id="medium">MEDIUM</p><p>The site can handle a bunch of attacks that solely try and build up its database, but eventually
+		    the database is going to crash or perhaps even cost money if it needs to hold more entries than my client expected.</p>
+		<h5>Description of Issue</h5>
+			<p>After running a shell script for three minutes, I added 4000 extra entries into Nicki's scoretable. I did not attempt to
+			   actually crash her database at the risk of losing the most important tool for my assessment, but it would have required
+			   little to no effort to do so. 
+		<h5>Proof of vulnerability</h5>
+			<img src="ManyEnt.png" alt="Spammed entries"/>
+			<p>These pictures show just a small sampling of the gratuitous amounts of data being held by the app.</p>
+		<h5>Resolution</h5>
+			<p>Frankly, nobody really needs to see what the 151st best score is, so limiting the number of scores is a sensible solution.
+			   At the point where my client adds the score into the database, it would be wise to first get the number of documents 
+			   currently being stored, then to delete the lowest one if that number is equal to 150.
+			</p>
+
+		<div id="divider"/>
+		</br>
+
+		<h5>Issue</h5>
+		<h5>Location</h5>
+		<h5>Severity of Issue</h5>
+		<h5>Description of Issue</h5>
+		<h5>Proof of vulnerability</h5>
+		<h5>Resolution</h5>
+
+		<div id="divider"/>
+		</br>
+
+		<h5>Issue</h5>
+		<h5>Location</h5>
+		<h5>Severity of Issue</h5>
+		<h5>Description of Issue</h5>
+		<h5>Proof of vulnerability</h5>
+		<h5>Resolution</h5>
+		</br></br>
+
+	<h3>Conclusion</h3>
+
+</body>
+</html
