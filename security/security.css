@@ -6,3 +6,19 @@ h1 {
 	font-size: 60px;
 	text-align: center;
 }
+
+h3 {
+	font-size: 30px;
+	width: 400px;
+	text-align: center;
+    background-color: #000066;
+    color: #FFFFFF;
+}
+
+h5 {
+	font-size: 18px;
+	width: 500px;
+	padding-left: 80px;
+	text-decoration: underline;
+	color: #000066;
+}
