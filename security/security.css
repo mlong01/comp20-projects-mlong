@@ -70,3 +70,9 @@ img {
 	color: #0000FF;
 	padding-bottom: 0px;
 }
+
+#divider {
+	border-radius: 10px;
+	height: 30px;
+	background-color: #000066;
+}
