@@ -64,14 +64,21 @@
 		<h5>Location</h5>
 			<p>Javascript file for app</p>
 		<h5>Severity of Issue</h5>
-			<p id="high">HIGH</p><p></p>
+			<p id="high">HIGH</p><p>Allowing universal access to the app provides unlimited sources for attack.</p>
 		<h5>Description of Issue</h5>
+			<p>By allowing universal access to the app, any page or other application can access and play with the app's data. The door is
+			   wide open for any malicioius person to access the data and manipulate or infiltrate the database. If access to the site was
+			   restricted to known sites that could authenticate themselves, the site would be more secure.
+			</p>
 		<h5>Proof of vulnerability</h5>
 			<img src="CORS.png" alt="CORS line in javascript file"/>
+			<p>The 'Access-Control-Allow-Origin' with the argument of '*', meaning everything, gives everything access to the app.</p>
 		<h5>Resolution</h5>
 			<p>Instead of allowing universal CORS access, it would be safer to only allow access to the site for which the app was developed
 			   (which in this case would be the 2048 page). That way, it makes it harder for the site to be attacked with malicious input if
-			   the input can only come from one source</p>
+			   the input can only come from one source.</p>
+			<p>On top of that, adding a 'withCredentials' property to the XMLHttpRequest requires authentication to access the app. The
+			   credentials can be in the form of something like a cookie, and it adds further security to the app.</p>
 
 		<div id="divider"/>
 		</br>
@@ -85,6 +92,16 @@
 		</br></br>
 
 	<h3>Conclusion</h3>
+
+		<p>All in all, the app was well put together. It served a great purpose - who hasn't bragged to their friends about their prowess
+		   in 2048 yet? The app unfortunately sits as a large target for attackers. As the app increases in popularity, however, it grows
+		   as a target for attackers.
+
+		   Fixing the issues pointed out above is a good start to making the app more secure. The database sits as the largest target,
+		   and it doesn't have much default security. Taking every step possible to protect it is of the highest priority for the app's
+		   security.
+		</p>
+	</br></br></br>
 
 </body>
 </html
