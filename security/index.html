@@ -60,11 +60,18 @@
 		</br>
 
 		<h5>Issue</h5>
+			<ul><li>Wide-open CORS access</li></ul>
 		<h5>Location</h5>
+			<p>Javascript file for app</p>
 		<h5>Severity of Issue</h5>
+			<p id="high">HIGH</p><p></p>
 		<h5>Description of Issue</h5>
 		<h5>Proof of vulnerability</h5>
+			<img src="CORS.png" alt="CORS line in javascript file"/>
 		<h5>Resolution</h5>
+			<p>Instead of allowing universal CORS access, it would be safer to only allow access to the site for which the app was developed
+			   (which in this case would be the 2048 page). That way, it makes it harder for the site to be attacked with malicious input if
+			   the input can only come from one source</p>
 
 		<div id="divider"/>
 		</br>
