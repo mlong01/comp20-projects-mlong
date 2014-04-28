@@ -84,12 +84,19 @@
 		</br>
 
 		<h5>Issue</h5>
+			<ul><li>Unsecured MongoDB</li></ul>
 		<h5>Location</h5>
+			<p>At time of submitting score, or any time the db can be accessed</p>
 		<h5>Severity of Issue</h5>
+			<p id="high">HIGH</p><p>Complete strangers can have access to your database, manipulating the data however they want.</p>
 		<h5>Description of Issue</h5>
-		<h5>Proof of vulnerability</h5>
+			<p>Mongo databases are by default unprotected, and require user authentication to set a username/password. Without that
+			   authentication, anybody can gain access to the data inside the database. If all the data inside the database gets ruined,
+			   the app serves no purpose.
+			</p>
 		<h5>Resolution</h5>
-		</br></br>
+		    <p>This one's easy - just go ahead and enable that authentication!</p>
+		</br>
 
 	<h3>Conclusion</h3>
 
@@ -101,7 +108,7 @@
 		   and it doesn't have much default security. Taking every step possible to protect it is of the highest priority for the app's
 		   security.
 		</p>
-	</br></br></br>
+	</br></br>
 
 </body>
 </html
